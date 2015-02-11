@@ -59,6 +59,11 @@ public class Controller implements MessageHandler {
     //mvcMessaging.subscribe("view:toggleButtonClick", this);
   }
 
+  /**
+   * Receives and handles messages from other classes
+   * @param messageName name of received message
+   * @param messagePayload string the message was carrying
+   */
   @Override
   public void messageHandler(String messageName, Object messagePayload) {
     if (messagePayload != null) {

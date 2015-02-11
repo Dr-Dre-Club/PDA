@@ -2,7 +2,7 @@ package com.mrjaffesclass.apcs.mvc.template;
 
 /**
  * This is the message payload class.  Instantiate this class when sending
- * field / value message data for the up/down buttons
+ * strings received from users
  * 
  * @author Roger Jaffe
  * @version 1.0
@@ -24,7 +24,7 @@ public class MessagePayload {
 
   /**
    * Getter method for the 
-   * @return 
+   * @return text stored in messagePayload
    */
   public String getFieldText() {
     return fieldText;

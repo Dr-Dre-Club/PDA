@@ -30,11 +30,22 @@ public class Model implements MessageHandler {
     mvcMessaging.subscribe("view:stringEntered", this);
   }
   
+  /**
+   * Instantiate an object containing a string to be returned
+   * to the view 
+   * @param fieldText text received from view
+   * @return the HashMap payload to be sent with the message
+   */
   private MessagePayload createPayload(String fieldText) {
     MessagePayload payload = new MessagePayload(fieldText);
     return payload;
   }
   
+  /**
+   * Receives and handles messages from other classes
+   * @param messageName name of received message
+   * @param messagePayload string the message was carrying
+   */
   @Override
   public void messageHandler(String messageName, Object messagePayload) {
     if (messagePayload != null) {
@@ -60,4 +71,3 @@ public class Model implements MessageHandler {
   }
  
 }
-    //mvcMessaging.notify("model:variable1Changed", variable1, true); }
