@@ -36,8 +36,8 @@ public class Model implements MessageHandler {
    * @param fieldText text received from view
    * @return the HashMap payload to be sent with the message
    */
-  private MessagePayload createPayload(String fieldText) {
-    MessagePayload payload = new MessagePayload(fieldText);
+  private MessagePayload createPayload(String text1,String text2) {
+    MessagePayload payload = new MessagePayload(text1, text2);
     return payload;
   }
   
@@ -54,14 +54,21 @@ public class Model implements MessageHandler {
       System.out.println("MSG: received by model: "+messageName+" | No data sent");
     }
     MessagePayload payload = (MessagePayload)messagePayload;
-    String field = payload.getFieldText();
+    String field = payload.getText1();
     double a;
     int i;
+    int j;
     if ("view:stringEntered".equals(messageName)){
         try{
             a = Double.parseDouble(field);
             i = ((int)a / 2) + 7;
-            mvcMessaging.notify("model:returnPDA", createPayload("" + i));
+            j = ((int)(a-7)*2);
+            if(j < 0)
+                j = 0;
+            if(a < 14)
+                mvcMessaging.notify("model:returnPDA", createPayload("" + j, "" + i));
+            else
+                mvcMessaging.notify("model:returnPDA", createPayload("" + i, "" + j));
         }
         catch (NumberFormatException e){
             mvcMessaging.notify("model:nonNum");

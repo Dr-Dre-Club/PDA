@@ -9,25 +9,34 @@ package com.mrjaffesclass.apcs.mvc.template;
  */
 public class MessagePayload {
   
-  private final String fieldText;
+  private final String text1;
+  private final String text2;
 
   
   /**
    * Class constructor
-   * @param _fieldText
+   * @param _text1
    * 
    */
-  public MessagePayload(String _fieldText) {
-    fieldText = _fieldText;
-   
+  public MessagePayload(String _text1) {
+    text1 = _text1;
+    text2 = null;
+  }
+  
+  public MessagePayload(String _text1, String _text2){
+    text1 = _text1;
+    text2 = _text2;
   }
 
   /**
    * Getter method for the 
    * @return text stored in messagePayload
    */
-  public String getFieldText() {
-    return fieldText;
+  public String getText1() {
+    return text1;
   }
   
+  public String getText2() {
+      return text2;
+  }
 }
