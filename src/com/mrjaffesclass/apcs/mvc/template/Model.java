@@ -63,6 +63,8 @@ public class Model implements MessageHandler {
             a = Double.parseDouble(field);
             if (a < 15)
                 mvcMessaging.notify("model:tooYoung", null);
+            else if (a > 142)
+                mvcMessaging.notify("model:tooOld", null);
             else{
                 i = (int)Math.ceil((a / 2) + 7);
                 j = (int)Math.floor(((a-7)*2));
