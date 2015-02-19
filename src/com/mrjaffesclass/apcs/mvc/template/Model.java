@@ -61,14 +61,13 @@ public class Model implements MessageHandler {
     if ("view:stringEntered".equals(messageName)){
         try{
             a = Double.parseDouble(field);
-            i = ((int)a / 2) + 7;
-            j = ((int)(a-7)*2);
-            if(j < 0)
-                j = 0;
-            if(a < 14)
-                mvcMessaging.notify("model:returnPDA", createPayload("" + j, "" + i));
-            else
+            if (a < 15)
+                mvcMessaging.notify("model:tooYoung", null);
+            else{
+                i = (int)Math.ceil((a / 2) + 7);
+                j = (int)Math.floor(((a-7)*2));
                 mvcMessaging.notify("model:returnPDA", createPayload("" + i, "" + j));
+            }
         }
         catch (NumberFormatException e){
             mvcMessaging.notify("model:nonNum");
